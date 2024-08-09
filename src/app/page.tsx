@@ -1,113 +1,162 @@
-import Image from "next/image";
+const SERVICES = [
+  {
+    title: "Full-Stack Development",
+    description:
+      "Expertise in building scalable next-gen apps from scratch with a focus on both front-end and back-end development.",
+    icon: "💻",
+  },
+  {
+    title: "DevOps & Infrastructure",
+    description:
+      "Specialized in deploying and managing applications using Docker, Kubernetes, and AWS for seamless performance.",
+    icon: "🚀",
+  },
+  {
+    title: "Frontend Development",
+    description:
+      "Proficient in React.js, Next.js, TypeScript, and CSS frameworks like Tailwind CSS, ensuring top-notch user experiences.",
+    icon: "🎨",
+  },
+  {
+    title: "Backend Development",
+    description:
+      "Extensive experience with Django, Python, and PostgreSQL to build robust and secure backend systems.",
+    icon: "🛠️",
+  },
+  {
+    title: "CI/CD Automation",
+    description:
+      "Implementing automated testing and CI/CD pipelines to ensure code quality and efficient deployment processes.",
+    icon: "🔄",
+  },
+  {
+    title: "Technical Leadership",
+    description:
+      "Experience as a CTO leading teams and projects, mentoring developers, and driving innovation in tech products.",
+    icon: "👨‍💼",
+  },
+];
+
+const WORKS = [
+  {
+    title: "OnRoad",
+    description: "A platform where users can quote vehicle prices anonymously.",
+    link: "https://www.onroad.com",
+  },
+  {
+    title: "Biosis API & DevOps",
+    description:
+      "API development and DevOps implementation for a bioscience company.",
+    link: "https://www.biosis.com",
+  },
+  {
+    title: "maalik.dev",
+    description:
+      "Personal portfolio and blog showcasing projects and expertise.",
+    link: "https://www.maalik.dev",
+  },
+];
+
+const TESTIMONIALS = [
+  {
+    name: "Akshay S.",
+    feedback:
+      "Malik is a top-tier developer! He delivered high-quality code and was very professional throughout our project.",
+  },
+  {
+    name: "Nitesh O.",
+    feedback:
+      "Exceptional work! Malik’s expertise in full-stack development helped us launch our product on time.",
+  },
+  {
+    name: "Wyatt B.",
+    feedback:
+      "Great experience working with Malik. He has a deep understanding of both frontend and backend technologies.",
+  },
+];
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <div className="min-h-screen bg-gray-100 text-gray-800">
+      <div>
+        <header className="bg-gray-200 text-gray-800 p-4 flex justify-between items-center">
+          <span>logo</span>
+          <span>links</span>
+        </header>
+
+        <section className="h-[80vh] flex justify-center items-center bg-gray-300">
+          <h6 className="text-5xl text-center">Big Catchy Title</h6>
+        </section>
+
+        <section className="flex flex-col justify-center items-center bg-white">
+          <h6 className="text-2xl text-center p-8">Services</h6>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8">
+            {SERVICES.map((service, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center bg-gray-100 p-4 rounded-lg shadow-md"
+              >
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h6 className="text-xl font-bold mb-2">{service.title}</h6>
+                <p className="text-center">{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="bg-gray-200 py-8">
+          <h6 className="text-2xl text-center p-8">Work</h6>
+          <div className="flex flex-col items-center gap-4">
+            {WORKS.map((work, index) => (
+              <a
+                key={index}
+                href={work.link}
+                className="block bg-white p-4 rounded-lg shadow-md w-3/4 md:w-1/2"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <h6 className="text-xl font-bold mb-2">{work.title}</h6>
+                <p>{work.description}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section className="bg-white py-8">
+          <h6 className="text-2xl text-center p-8">Testimonials</h6>
+          <div className="flex flex-col items-center gap-4">
+            {TESTIMONIALS.map((testimonial, index) => (
+              <div
+                key={index}
+                className="bg-gray-100 p-4 rounded-lg shadow-md w-3/4 md:w-1/2"
+              >
+                <p className="italic">&quot;{testimonial.feedback}&quot;</p>
+                <h6 className="text-right font-bold mt-4">
+                  - {testimonial.name}
+                </h6>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <footer className="bg-gray-800 text-white py-8">
+          <div className="text-center">
+            <h6 className="text-xl font-bold mb-2">Contact Me</h6>
+            <p>
+              Email:{" "}
+              <a href="mailto:hello@maalik.dev" className="underline">
+                hello@maalik.dev
+              </a>
+            </p>
+            <p>
+              Phone:{" "}
+              <a href="tel:+919975130529" className="underline">
+                +91 9975130529
+              </a>
+            </p>
+          </div>
+        </footer>
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
 }
