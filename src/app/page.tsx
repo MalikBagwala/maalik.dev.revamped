@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const SERVICES = [
   {
     title: "Full-Stack Development",
@@ -37,22 +39,34 @@ const SERVICES = [
   },
 ];
 
-const WORKS = [
+export const WORKS = [
   {
+    slug: "onroad",
     title: "OnRoad",
     description: "A platform where users can quote vehicle prices anonymously.",
+    details:
+      "OnRoad is a comprehensive platform that allows users to anonymously quote and compare vehicle prices. I was responsible for both frontend and backend development, ensuring a seamless user experience and robust backend API integration. The project also included secure payment gateway integration and real-time data analytics.",
+    technologies: ["React.js", "Node.js", "Express", "MongoDB"],
     link: "https://www.onroad.com",
   },
   {
+    slug: "biosis-api-devops",
     title: "Biosis API & DevOps",
     description:
       "API development and DevOps implementation for a bioscience company.",
+    details:
+      "In this project, I developed and maintained RESTful APIs, implemented CI/CD pipelines using Jenkins, and managed cloud infrastructure on AWS. The focus was on scalability, performance, and security, catering to the specific needs of the bioscience industry.",
+    technologies: ["Django", "AWS", "Docker", "Kubernetes"],
     link: "https://www.biosis.com",
   },
   {
+    slug: "maalik-dev",
     title: "maalik.dev",
     description:
       "Personal portfolio and blog showcasing projects and expertise.",
+    details:
+      "maalik.dev is my personal portfolio where I showcase my work, share insights through blogs, and highlight my expertise in various technologies. This project was built using Next.js for SSR and Tailwind CSS for styling. It is optimized for performance and SEO.",
+    technologies: ["Next.js", "Tailwind CSS", "Vercel"],
     link: "https://www.maalik.dev",
   },
 ];
@@ -108,16 +122,14 @@ export default function Home() {
           <h6 className="text-2xl text-center p-8">Work</h6>
           <div className="flex flex-col items-center gap-4">
             {WORKS.map((work, index) => (
-              <a
+              <Link
                 key={index}
-                href={work.link}
+                href={`work/${work.slug}`}
                 className="block bg-white p-4 rounded-lg shadow-md w-3/4 md:w-1/2"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <h6 className="text-xl font-bold mb-2">{work.title}</h6>
                 <p>{work.description}</p>
-              </a>
+              </Link>
             ))}
           </div>
         </section>
